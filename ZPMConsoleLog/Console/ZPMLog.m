@@ -34,8 +34,18 @@ static ZPMLog *zpmLog;
     return zpmLog;
 }
 
+- (void)showConsoleWindow
+{
+    [self deleteConsoleFile];
+    [self openNSLogToDocumentFolder];
+    [self showMeum];
+}
+
 - (NSString *)getLogFilePath
 {
+    if ([self.filePath hasSuffix:@".js"]) {
+        return self.filePath;
+    }
     NSString *fileName = @"ZPMLog.js"; //[NSString stringWithFormat:@"%@.log",[NSDate date]];
     //获取document目录路径
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -43,6 +53,13 @@ static ZPMLog *zpmLog;
     NSString *logFilePath = [docDir stringByAppendingPathComponent:fileName];
     
     return logFilePath;
+}
+
+- (void)deleteConsoleFile
+{
+    NSString *logFilePath = [[ZPMLog shareInstance] getLogFilePath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:logFilePath error:nil];
 }
 
 - (void)openNSLogToDocumentFolder
