@@ -1,5 +1,9 @@
 # ZPMConsoleLog
 
+### 预览图
+
+![image](./GithubImages/ScreenShot001.png) ![image](./GithubImages/ScreenShot002.png)
+
 ### 安装方法
 ```
 pod 'ZPMConsoleLog'
@@ -22,4 +26,9 @@ pod 'ZPMConsoleLog'
 
 // 关闭记录到日志文件，关闭后，xcode控制台将会显示出信息
 [[ZPMLog shareInstance] closeNSLogToDocumentFolder];
+```
+
+如果你想自定义日志存放路径，可以修改filePath
+```
+[[ZPMLog shareInstance] setFilePath:@"你的文件完整路径"];
 ```
