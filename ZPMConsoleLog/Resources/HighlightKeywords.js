@@ -57,7 +57,7 @@ function getPosition(e) {
         t += e.offsetTop;
         l += e.offsetLeft;
     }
-    scrollTo(l, t - 60);
+    scrollTo(l, t);
 }
 
 // the main entry point to start the search

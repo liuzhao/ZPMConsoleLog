@@ -10,6 +10,8 @@
 #import "UIWebView+SearchWebView.h"
 #import "ZPMLog.h"
 
+#define IS_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
 @interface ZPMConsoleViewController ()<UIWebViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
@@ -29,13 +31,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navigationController.navigationBar.translucent = NO;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationItem.title = @"控制台";
-
+    self.navigationItem.title = @"Console";
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss)];
     
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearLog)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearLog)];
     
     [self setupMainView];
 }
@@ -51,8 +55,7 @@
 {
     CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
     
-    CGFloat originY = self.navigationController.navigationBar.translucent ? statusHeight + 44 : 0;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, originY, self.view.bounds.size.width, 44)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
     [self.view addSubview:view];
     
     UISearchBar *searchbar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
@@ -61,11 +64,11 @@
     self.searchbar = searchbar;
     
     NSString *logFilePath = [[ZPMLog shareInstance] getLogFilePath];
-
+    
     NSURL *url = [NSURL fileURLWithPath:logFilePath];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, originY + 44, self.view.bounds.size.width, self.view.bounds.size.height - originY - 44 - 44)];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, view.frame.size.height, self.view.bounds.size.width, self.view.bounds.size.height - statusHeight - 44 - view.frame.size.height - 44)];
     webView.delegate = self;
     [webView loadRequest:request];
     [self.view addSubview:webView];
@@ -76,18 +79,19 @@
     self.activityView.center = self.view.center;
     [self.view addSubview:self.activityView];
     
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44)];
+    CGFloat bottom_space = (IS_IPHONE_X ? 34.0 : 0.0);
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - statusHeight - 44 - 44 - bottom_space, self.view.frame.size.width, 44 + bottom_space)];
     [self.view addSubview:toolbar];
     
     self.nextItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"next"]
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:@selector(showNextKeyword)];
+                                                     style:UIBarButtonItemStylePlain
+                                                    target:self
+                                                    action:@selector(showNextKeyword)];
     
     self.previousItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"previous"]
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:self
-                                                                    action:@selector(showPreviousKeyword)];
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(showPreviousKeyword)];
     UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                target:nil action:nil];
     
@@ -101,7 +105,7 @@
     
     self.nextItem.enabled = NO;
     self.previousItem.enabled = NO;
-
+    
 }
 
 #pragma mark- Action
@@ -199,13 +203,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
