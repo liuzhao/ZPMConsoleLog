@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZPMConsoleLog"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "Show Console on simulator or device."
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ Show Console Log on simulator or device. Convenient debugging for you.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/liuzhao/ZPMConsoleLog.git", :tag => "v#{s.version}" }
+  s.source       = { :git => "https://github.com/liuzhao/ZPMConsoleLog.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

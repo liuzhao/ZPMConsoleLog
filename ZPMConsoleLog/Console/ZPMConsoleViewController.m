@@ -49,7 +49,10 @@
 
 - (void)setupMainView
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 44)];
+    CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
+    
+    CGFloat originY = self.navigationController.navigationBar.translucent ? statusHeight + 44 : 0;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, originY, self.view.bounds.size.width, 44)];
     [self.view addSubview:view];
     
     UISearchBar *searchbar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
@@ -62,7 +65,7 @@
     NSURL *url = [NSURL fileURLWithPath:logFilePath];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64 + 44, self.view.bounds.size.width, self.view.bounds.size.height - 64 - 44 - 44)];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, originY + 44, self.view.bounds.size.width, self.view.bounds.size.height - originY - 44 - 44)];
     webView.delegate = self;
     [webView loadRequest:request];
     [self.view addSubview:webView];

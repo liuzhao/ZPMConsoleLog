@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZPMConsoleLog/Console/ZPMLog.m"
-            timestampString = "546937528.408675"
+            timestampString = "546941000.27967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -26,28 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZPMConsoleLog/ViewController.m"
-            timestampString = "546937528.410043"
+            timestampString = "546941000.281539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "-didReceiveMemoryWarning"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZPMConsoleLog/Console/ZPMLog.m"
-            timestampString = "546937528.410239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-showDebugOverlay"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
