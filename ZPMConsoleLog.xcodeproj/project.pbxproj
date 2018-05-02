@@ -21,6 +21,8 @@
 		2548865020977E900042FC75 /* previous@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2548864B20977E900042FC75 /* previous@3x.png */; };
 		2548865120977E900042FC75 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2548864C20977E900042FC75 /* next@2x.png */; };
 		2548865220977E900042FC75 /* next@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2548864D20977E900042FC75 /* next@3x.png */; };
+		25977877209968090099480B /* ZPMDebugOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 25977876209968090099480B /* ZPMDebugOverlay.m */; };
+		2597789A2099988A0099480B /* GithubDebug.png in Resources */ = {isa = PBXBuildFile; fileRef = 25977899209998890099480B /* GithubDebug.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,9 @@
 		2548864B20977E900042FC75 /* previous@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "previous@3x.png"; sourceTree = "<group>"; };
 		2548864C20977E900042FC75 /* next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next@2x.png"; sourceTree = "<group>"; };
 		2548864D20977E900042FC75 /* next@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next@3x.png"; sourceTree = "<group>"; };
+		25977875209968090099480B /* ZPMDebugOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPMDebugOverlay.h; sourceTree = "<group>"; };
+		25977876209968090099480B /* ZPMDebugOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPMDebugOverlay.m; sourceTree = "<group>"; };
+		25977899209998890099480B /* GithubDebug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GithubDebug.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +106,8 @@
 				2548864320977E860042FC75 /* ZPMLog.m */,
 				2548863F20977E860042FC75 /* UIWebView+SearchWebView.h */,
 				2548864220977E860042FC75 /* UIWebView+SearchWebView.m */,
+				25977875209968090099480B /* ZPMDebugOverlay.h */,
+				25977876209968090099480B /* ZPMDebugOverlay.m */,
 			);
 			path = Console;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 		2548864820977E900042FC75 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				25977899209998890099480B /* GithubDebug.png */,
 				2548864920977E900042FC75 /* previous@2x.png */,
 				2548864A20977E900042FC75 /* HighlightKeywords.js */,
 				2548864B20977E900042FC75 /* previous@3x.png */,
@@ -178,6 +186,7 @@
 				2548864F20977E900042FC75 /* HighlightKeywords.js in Resources */,
 				2548863520977E6E0042FC75 /* LaunchScreen.storyboard in Resources */,
 				2548865120977E900042FC75 /* next@2x.png in Resources */,
+				2597789A2099988A0099480B /* GithubDebug.png in Resources */,
 				2548864E20977E900042FC75 /* previous@2x.png in Resources */,
 				2548863220977E6E0042FC75 /* Assets.xcassets in Resources */,
 				2548865020977E900042FC75 /* previous@3x.png in Resources */,
@@ -194,6 +203,7 @@
 			files = (
 				2548862D20977E6D0042FC75 /* ViewController.m in Sources */,
 				2548863820977E6E0042FC75 /* main.m in Sources */,
+				25977877209968090099480B /* ZPMDebugOverlay.m in Sources */,
 				2548864620977E860042FC75 /* UIWebView+SearchWebView.m in Sources */,
 				2548864520977E860042FC75 /* ZPMConsoleViewController.m in Sources */,
 				2548864720977E860042FC75 /* ZPMLog.m in Sources */,
@@ -274,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -326,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -340,6 +350,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D7W53A5GMW;
 				INFOPLIST_FILE = ZPMConsoleLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,6 +368,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D7W53A5GMW;
 				INFOPLIST_FILE = ZPMConsoleLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

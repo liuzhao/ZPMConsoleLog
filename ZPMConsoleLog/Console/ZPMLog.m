@@ -8,6 +8,7 @@
 
 #import "ZPMLog.h"
 #import "ZPMConsoleViewController.h"
+#import "ZPMDebugOverlay.h"
 
 // 屏幕高度
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
@@ -38,7 +39,7 @@ static ZPMLog *zpmLog;
 {
     [self deleteConsoleFile];
     [self openNSLogToDocumentFolder];
-    [self showMeum];
+    [self showDebugOverlay];
 }
 
 - (NSString *)getLogFilePath
@@ -91,13 +92,23 @@ static ZPMLog *zpmLog;
     }
 }
 
+- (void)showDebugOverlay
+{
+    ZPMDebugOverlay *zpmWindow = [[ZPMDebugOverlay alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 150, 60, 60) mainImageName:@"GithubDebug.png" bgcolor:[UIColor lightGrayColor] animationColor:[UIColor purpleColor]];
+
+    __weak __typeof(self)weakSelf = self;
+    zpmWindow.callService = ^{
+        [weakSelf pushToLogVC];
+    };
+}
+
 - (void)pushToLogVC
 {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[ZPMConsoleViewController new]];
     [[self getCurrentVC] presentViewController:nav animated:YES completion:^{
         
     }];
-    self.suspensionBtn.hidden = YES;
+//    self.suspensionBtn.hidden = YES;
 }
 
 - (UIViewController *)getCurrentVC
