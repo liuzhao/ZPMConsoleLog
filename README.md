@@ -28,7 +28,19 @@ pod 'ZPMConsoleLog'
 [[ZPMLog shareInstance] closeNSLogToDocumentFolder];
 ```
 
-如果你想自定义日志存放路径，可以修改filePath
+如果你想自定义日志存放路径，可以修改filePath，注意：你打文件必须是.js格式文件。
 ```
 [[ZPMLog shareInstance] setFilePath:@"你的文件完整路径"];
 ```
+### 注意事项
+
+如果你的工程使用了DDLog（CocoaLumberjack）的话，而你又不想看到NSLog的输出的话，记得先调用
+```
+[[ZPMLog shareInstance] closeNSLogToDocumentFolder];
+```
+关闭NSLog输出。
+DDLog的DDFileLogger支持自定义存储日志文件路径，以.js格式文件存储，然后使用
+```
+[[ZPMLog shareInstance] setFilePath:@"DDLog的自定义路径"];
+```
+就可以输出你的DDLog日志。
