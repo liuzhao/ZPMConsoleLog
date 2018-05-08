@@ -42,6 +42,13 @@ static ZPMLog *zpmLog;
     [self showDebugOverlay];
 }
 
+- (void)showConsoleWindowWithImagesAndTitle:(NSDictionary *)imagesAndTitle handleClick:(ClickBolcks)handle
+{
+    [self deleteConsoleFile];
+    [self openNSLogToDocumentFolder];
+    [self showDebugOverlayWithImagesAndTitle:imagesAndTitle handleClick:handle];
+}
+
 - (NSString *)getLogFilePath
 {
     if ([self.filePath hasSuffix:@".js"]) {
@@ -99,6 +106,18 @@ static ZPMLog *zpmLog;
     __weak __typeof(self)weakSelf = self;
     zpmWindow.callService = ^{
         [weakSelf pushToLogVC];
+    };
+}
+
+- (void)showDebugOverlayWithImagesAndTitle:(NSDictionary *)imagesAndTitle handleClick:(ClickBolcks)handle
+{
+    ZPMDebugOverlay *zpmWindow = [[ZPMDebugOverlay alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 60, SCREEN_HEIGHT - 150, 60, 60) mainImageName:@"GithubDebug.png" imagesAndTitle:imagesAndTitle bgcolor:[UIColor lightGrayColor] animationColor:[UIColor purpleColor]];
+    
+//    __weak __typeof(self)weakSelf = self;
+    zpmWindow.clickBolcks = ^(NSInteger i){
+        if (handle) {
+            handle(i);
+        }
     };
 }
 

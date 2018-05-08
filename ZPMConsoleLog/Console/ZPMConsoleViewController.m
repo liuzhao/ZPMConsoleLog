@@ -12,7 +12,7 @@
 
 #define IS_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
-@interface ZPMConsoleViewController ()<UIWebViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface ZPMConsoleViewController ()<UIWebViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, assign) NSInteger keywordCount;
@@ -32,6 +32,8 @@
     // Do any additional setup after loading the view.
     
     self.navigationController.navigationBar.translucent = NO;
+    
+    self.navigationController.delegate = self;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -200,6 +202,16 @@
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (navigationController.isBeingPresented) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss)];
+    }
+    else {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
 }
 
 /*

@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef void(^ClickBolcks)(NSInteger i);
+
 @interface ZPMLog : NSObject
 
+@property (nonatomic,copy) ClickBolcks clickBolcks;
 
 /**
  悬浮按钮
@@ -28,6 +31,13 @@
  显示控制台悬浮窗
  */
 - (void)showConsoleWindow;
+
+/**
+ 显示控制台悬浮窗，点击后出带图片和文字的选项
+
+ @param imagesAndTitle 字典，不能为空。如：@{@"image1":@"用户中心",@"image2":@"退出登录",@"image3":@"客服中心"}
+ */
+- (void)showConsoleWindowWithImagesAndTitle:(NSDictionary *)imagesAndTitle handleClick:(ClickBolcks)handle;
 
 /**
  获取日志文件路径

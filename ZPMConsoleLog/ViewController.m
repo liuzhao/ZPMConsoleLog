@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ZPMLog.h"
+#import "ZPMConsoleViewController.h"
 
 @interface ViewController ()
 
@@ -28,10 +29,17 @@
     NSString *logFilePath = [docDir stringByAppendingPathComponent:fileName];
 
 //#ifdef DEBUG
+    __weak __typeof(self)weakSelf = self;
     [[ZPMLog shareInstance] setFilePath:logFilePath];
-    [[ZPMLog shareInstance] showConsoleWindow];
+    [[ZPMLog shareInstance] showConsoleWindowWithImagesAndTitle:@{@"icon_1":@"用户中心", @"icon_2":@"退出登录", @"icon_3":@"客服中心"} handleClick:^(NSInteger i) {
+        NSLog(@"click=%zd",i);
+        if (i == 0) {
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[ZPMConsoleViewController new]];
+            [weakSelf presentViewController:nav animated:YES completion:nil];
+//            [weakSelf.navigationController pushViewController:[ZPMConsoleViewController new] animated:YES];
+        }
+    }];
 //#endif
-
     
     NSLog(@"viewDidLoad");
 }
@@ -41,6 +49,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

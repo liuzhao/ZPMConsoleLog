@@ -103,7 +103,7 @@
     return  [self initWithFrame:frame mainImageName:name imagesAndTitle:imagesAndTitle bgcolor:bgcolor animationColor:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame mainImageName:(NSString *)mainImageName imagesAndTitle:(NSDictionary*)imagesAndTitle bgcolor:(UIColor *)bgcolor animationColor:animationColor
+- (instancetype)initWithFrame:(CGRect)frame mainImageName:(NSString *)mainImageName imagesAndTitle:(NSDictionary *)imagesAndTitle bgcolor:(UIColor *)bgcolor animationColor:animationColor
 {
     if(self = [super initWithFrame:frame])
     {
@@ -179,7 +179,7 @@
         // 改成image在上，title在下
         button.titleEdgeInsets = UIEdgeInsetsMake(self.frameWidth/2 , -image.size.width, 0.0, 0.0);
         button.imageEdgeInsets = UIEdgeInsetsMake(2.0, 8.0, 16.0, -
-                                                  button.titleLabel.bounds.size.width + 8);
+                                                  button.titleLabel.bounds.size.width);
         button.titleLabel.font = [UIFont systemFontOfSize: self.frameWidth/5];
         [button addTarget:self action:@selector(itemsClick:) forControlEvents:UIControlEventTouchUpInside];
         
